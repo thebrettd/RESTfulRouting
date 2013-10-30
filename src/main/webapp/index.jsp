@@ -1,8 +1,13 @@
 <html>
+<head>
+    <title>Sendhub Request Router</title>
+</head>
 <body>
-<h2>Jersey RESTful Web Application!</h2>
-<p><a href="webresources/myresource">Jersey resource</a>
-<p>Visit the <a href="http://jersey.java.net">Project Jersey website</a>
-for more information on Jersey!
+<h2>Sendhub Router Demo</h2>
+
+<p>
+    <a href="http://github.com/thebrettd/RESTfulRouting">See the code on Github</a>
+</p>
+
 </body>
 </html>
