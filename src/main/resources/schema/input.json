@@ -1,0 +1,18 @@
+{
+    "title": "SendHub Challenge Schema",
+    "type": "object",
+    "properties": {
+        "message": {
+            "type": "string"
+        },
+        "recipients": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "string"
+            },
+            "uniqueItems": true
+        }
+    },
+    "required": ["message", "recipients"]
+}
