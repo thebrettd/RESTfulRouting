@@ -1,12 +1,10 @@
-{"message": "SendHub Rocks", "additionalProperties": {}, "routes": [
+{"message": "SendHub Rocks", "routes": [
     {
         "recipients": ["+nullnull+15555555554", "+nullnull+15555555553", "+nullnull+15555555556", "+nullnull+15555555555", "+nullnull+15555555552"],
-        "additionalProperties": {},
         "ip": "10.0.2.0/24"
     },
     {
         "recipients": ["+nullnull+15555555551"],
-        "additionalProperties": {},
         "ip": "10.0.1.0/24"
     }
 ]}

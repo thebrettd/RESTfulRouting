@@ -11,7 +11,7 @@
 
 <p>
 
-    Try POSTing the following the following request to sendhubrouter.herokuapp.com/route
+    Try POSTing the following request to sendhubrouter.herokuapp.com/route
 
     <br/>
     <br/>

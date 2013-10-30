@@ -14,5 +14,6 @@
             "uniqueItems": true
         }
     },
-    "required": ["message", "recipients"]
+    "required": ["message", "recipients"],
+    "additionalProperties" : false
 }

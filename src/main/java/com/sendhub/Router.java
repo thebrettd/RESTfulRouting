@@ -19,12 +19,18 @@ public class Router {
         return createOutput(input, relayMap);
     }
 
+    @POST
+    @Produces("text/plain")
+    @Consumes({"text/plain","text/html"})
+    public String routes(){
+        return "Please include valid JSON in your request body";
+    }
+
     private Output createOutput(Input input, RelayMap relayMap) {
         Output output = new Output();
         output.setMessage(input.getMessage());
         output.setRoutes(createRoutesFromMap(relayMap));
         //todo output invalid phone numbers in response
-        //todo hide additionalProperties field?
         return output;
     }
 

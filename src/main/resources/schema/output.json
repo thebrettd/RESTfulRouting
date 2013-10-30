@@ -34,13 +34,12 @@
                             "id": "http://jsonschema.net/routes/0/recipients/0",
                             "required":false
                         }
-
-
                     }
-                }
-            }
-
-
+                },
+                "additionalProperties" : false
+            },
+            "additionalProperties" : false
         }
-    }
+    },
+    "additionalProperties" : false
 }
