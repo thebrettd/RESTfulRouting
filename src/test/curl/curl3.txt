@@ -1,0 +1,4 @@
+curl -X POST -H "Content-Type: application/json" -d '{"message": "SendHub Rocks", "recipients": ["+123"] }' sendhubrouter.herokuapp.com/route
+
+
+Send only 1 invalid number. System should handle this gracefully.

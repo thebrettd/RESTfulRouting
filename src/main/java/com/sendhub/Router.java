@@ -14,9 +14,12 @@ public class Router {
     @Consumes("application/json")
     public Output routes(Input input){
 
-        Map<String,List<USPhoneNumber>> validAndInvalidPhones = parsePhoneNumbers(input);
-        RelayMap relayMap = new RelayMap(validAndInvalidPhones.get("valid"));
-        return createOutput(input, relayMap, validAndInvalidPhones);
+        List<USPhoneNumber> validPhones = new ArrayList<USPhoneNumber>();
+        List<String> invalidPhones = new ArrayList<String>();
+        parsePhoneNumbers(input, validPhones, invalidPhones);
+
+        RelayMap relayMap = new RelayMap(validPhones);
+        return createOutput(input, relayMap, invalidPhones);
     }
 
     @POST
@@ -26,23 +29,13 @@ public class Router {
         return "Please include valid JSON in your request body";
     }
 
-    private Output createOutput(Input input, RelayMap relayMap, Map<String, List<USPhoneNumber>> validAndInvalidPhones) {
+    private Output createOutput(Input input, RelayMap relayMap, List<String> invalidPhones) {
         Output output = new Output();
         output.setMessage(input.getMessage());
         output.setRoutes(createRoutesFromMap(relayMap));
 
-        output.setInvalidNumbers(getInvalidsAsStrings(validAndInvalidPhones));
+        output.setInvalidNumbers(invalidPhones);
         return output;
-    }
-
-    private List<String> getInvalidsAsStrings(Map<String, List<USPhoneNumber>> validAndInvalidPhones) {
-        List<USPhoneNumber> invalids = validAndInvalidPhones.get("invalid");
-        List<String> phonesAsStrings = new ArrayList<String>();
-        for(USPhoneNumber currPhone : invalids){
-            phonesAsStrings.add(currPhone.toString());
-        }
-
-        return phonesAsStrings;
     }
 
     private List<Route> createRoutesFromMap(RelayMap relayMap) {
@@ -68,24 +61,14 @@ public class Router {
     }
 
 
-    private Map<String, List<USPhoneNumber>> parsePhoneNumbers(Input input) {
-        Map<String, List<USPhoneNumber>> validAndInvalidPhones = new HashMap<String, List<USPhoneNumber>>();
-        List<USPhoneNumber> validPhonesList = new ArrayList<USPhoneNumber>();
-        List<USPhoneNumber> invalidPhonesList = new ArrayList<USPhoneNumber>();
-
+    private void parsePhoneNumbers(Input input, List<USPhoneNumber> validPhones, List<String> invalidPhones) {
         for(String inputPhoneNumber : input.getRecipients()){
-            USPhoneNumber phone = new USPhoneNumber(inputPhoneNumber);
             if(USPhoneNumber.isValid(inputPhoneNumber)){
-                validPhonesList.add(phone);
+                validPhones.add(new USPhoneNumber(inputPhoneNumber));
             }else{
-                invalidPhonesList.add(phone);
+                invalidPhones.add(inputPhoneNumber);
             }
         }
-
-        validAndInvalidPhones.put("valid",validPhonesList);
-        validAndInvalidPhones.put("invalid", invalidPhonesList);
-
-        return validAndInvalidPhones;
     }
 
 }
