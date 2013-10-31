@@ -33,4 +33,11 @@ public class USPhoneNumberTest {
         assertTrue(testPhone.getExchangeCode().equals("235"));
         assertTrue(testPhone.toString().equals("+12342355678"));
     }
+
+    @Test
+    public void testIsValid(){
+        assertTrue(USPhoneNumber.isValid("+12342355678"));
+        assertFalse(USPhoneNumber.isValid("+123"));
+
+    }
 }
