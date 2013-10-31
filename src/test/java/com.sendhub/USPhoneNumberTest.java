@@ -8,10 +8,10 @@ import static org.junit.Assert.assertTrue;
 public class USPhoneNumberTest {
     @Test
     public void testValidateLength() throws Exception {
-        assertTrue(USPhoneNumber.isValid("+12345678901"));
+        assertTrue(USPhoneNumber.isValid("+12342355678"));
 
         assertFalse(USPhoneNumber.isValid("+1"));
-        assertFalse(USPhoneNumber.isValid("+123456789012"));
+        assertFalse(USPhoneNumber.isValid("+123423556781"));
     }
 
     @Test
@@ -26,11 +26,11 @@ public class USPhoneNumberTest {
 
     @Test
     public void testConstructor(){
-        USPhoneNumber testPhone = new USPhoneNumber("+12345678901");
+        USPhoneNumber testPhone = new USPhoneNumber("+12342355678");
 
         assertTrue(testPhone.getAreaCode().equals("234"));
         assertTrue(testPhone.getCountryCode().equals("1"));
-        assertTrue(testPhone.getNumber().equals("5678901"));
-        assertTrue(testPhone.toString().equals("+12345678901"));
+        assertTrue(testPhone.getExchangeCode().equals("235"));
+        assertTrue(testPhone.toString().equals("+12342355678"));
     }
 }
