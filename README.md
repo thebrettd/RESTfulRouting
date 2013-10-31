@@ -49,7 +49,7 @@ Enhancements
 ============
 Given more time, I would like to make the following enhancements
 
-* More graceful handling of invalid input - this would likely entail wrappers aruond the put and post methods, which attempt to validate and marshall the request body first.
+* More graceful handling of invalid input - this would likely entail wrappers around the put and post methods, which attempt to validate and marshall the request body first.
 * Queuing / Redundant Request handling. We should prevent users from submitting the same request multiple times. This requires support for identifying users of the API, and a message queue. Some kind of hashing algorithm could be applied to the contents of the request, and if it matches the hash of any request in the queue, we would consider it a dupe request and not process it.
 * More automated testing
 
