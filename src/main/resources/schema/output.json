@@ -9,6 +9,17 @@
             "id": "http://jsonschema.net/message",
             "required":false
         },
+        "invalidNumbers": {
+            "type":"array",
+            "id": "http://jsonschema.net/invalidNumbers",
+            "required":false,
+            "items":
+            {
+                "type":"string",
+                "id": "http://jsonschema.net/invalidNumbers/0",
+                "required":false
+            }
+        },
         "routes": {
             "type":"array",
             "id": "http://jsonschema.net/routes",
