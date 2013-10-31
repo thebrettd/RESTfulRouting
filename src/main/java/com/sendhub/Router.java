@@ -12,7 +12,7 @@ public class Router {
     @POST
     @Produces("application/json")
     @Consumes("application/json")
-    public Output routes(Input input){
+    public Output postRoutes(Input input){
 
         List<USPhoneNumber> validPhones = new ArrayList<USPhoneNumber>();
         List<String> invalidPhones = new ArrayList<String>();
@@ -20,6 +20,13 @@ public class Router {
 
         RelayMap relayMap = new RelayMap(validPhones);
         return createOutput(input, relayMap, invalidPhones);
+    }
+
+    @PUT
+    @Produces("application/json")
+    @Consumes("application/json")
+    public Output putRoutes(Input input){
+        return postRoutes(input);
     }
 
     @POST
