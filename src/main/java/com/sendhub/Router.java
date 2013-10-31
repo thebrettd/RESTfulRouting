@@ -14,8 +14,8 @@ public class Router {
     public Output routes(Input input){
 
         //todo capture invalid phones
-        List<PhoneNumber> phoneNumbers = parsePhoneNumbers(input);
-        RelayMap relayMap = new RelayMap(phoneNumbers);
+        List<USPhoneNumber> USPhoneNumbers = parsePhoneNumbers(input);
+        RelayMap relayMap = new RelayMap(USPhoneNumbers);
         return createOutput(input, relayMap);
     }
 
@@ -36,7 +36,7 @@ public class Router {
 
     private List<Route> createRoutesFromMap(RelayMap relayMap) {
         List<Route> routes = new ArrayList<Route>();
-        Map<String,List<PhoneNumber>> relayMapping = relayMap.getRelayMapping();
+        Map<String,List<USPhoneNumber>> relayMapping = relayMap.getRelayMapping();
 
         for(String usedRelay : relayMapping.keySet()){
             Route currRoute = new Route();
@@ -48,19 +48,19 @@ public class Router {
         return routes;
     }
 
-    private List<String> extractPhones(List<PhoneNumber> phoneNumbers) {
+    private List<String> extractPhones(List<USPhoneNumber> USPhoneNumbers) {
         List<String> phoneNumberStrings = new ArrayList<String>();
-        for(PhoneNumber currPhone : phoneNumbers){
+        for(USPhoneNumber currPhone : USPhoneNumbers){
             phoneNumberStrings.add(currPhone.toString());
         }
         return phoneNumberStrings;
     }
 
-    private List<PhoneNumber> parsePhoneNumbers(Input input) {
-        List<PhoneNumber> recipientsList = new ArrayList<PhoneNumber>();
+    private List<USPhoneNumber> parsePhoneNumbers(Input input) {
+        List<USPhoneNumber> recipientsList = new ArrayList<USPhoneNumber>();
         for(String inputPhoneNumber : input.getRecipients()){
-            if(PhoneNumber.isValid(inputPhoneNumber)){
-                PhoneNumber phone = new PhoneNumber(inputPhoneNumber);
+            if(USPhoneNumber.isValid(inputPhoneNumber)){
+                USPhoneNumber phone = new USPhoneNumber(inputPhoneNumber);
                 recipientsList.add(phone);
             }
         }
